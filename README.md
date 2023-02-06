@@ -67,11 +67,17 @@ Langkah-langkah menjalankan Apache Superset sebagai Systemd Service:
         WantedBy=multi-user.target
         ```
    - $ sudo chmod 644 /etc/systemd/system/superset.service
+   - Catatan: \
+   Ekseskusi file dalam shell script harus full path. Apabila tidak full path akan gagal diakses oleh systemd dalam service.
 3. Enable-kan service unit: \
    $ sudo systemctl daemon-reload \
    $ sudo systemctl enable superset.service
 4. Reboot system.
 5. Coba akses Apache Superset dengan web browser (http://192.168.56.102:8088) dari mesin host.
 
-Catatan:
-* Ekseskusi file dalam shell script harus full path. Apabila tidak full path akan gagal diakses oleh systemd dalam service.
+Mesin Ubuntu server yang telah terpasang Apache Superset dapat didistribusikan kepada orang lain dalam bentuk VirtualBox Image, dengan melakukan prosedur export melalui menu dalam VirtualBox:
+* Pilih menu **File** - **Export Appliance** (kemudian pilih nama virtual machine), lalu klik tombol **Next**.
+* Arahkan ke drive di mana file .OVA akan disimpan, sekaligus definisikan nama file .OVA tersebut (atau biarkan isian sesuai default), lalu klik tombol **Next**.
+* Klik tombol **Finish** (dan proses export akan berlangsung, biarkan hingga selesai).
+
+VirtualBox Image (file .OVA) dapat dengan mudah dideploy ke dalam VirtualBox melalui menu **File** - **Import Appliance** (arahkan ke file .OVA). Selanjutnya tinggal ikuti langkahnya sesuai menu visual dari VirtualBox.
